@@ -1,0 +1,1 @@
+New-Item -ItemType SymbolicLink -Path "c:\Users\XXXX\.codex\AGENTS.md" -Target "c:\Sources\agents\AGENTS.md"
