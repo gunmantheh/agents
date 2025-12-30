@@ -30,6 +30,18 @@
 - Always use light and dark themes
 - Allow to switch between light and dark themes
 
+### Security
+- Always sanitize user inputs
+- Always use parameterized queries to interact with databases
+- Always validate user inputs on both client and server sides
+- Always use HTTPS for web applications
+- Regularly update dependencies to patch security vulnerabilities
+- Implement proper authentication and authorization mechanisms
+- Use config files to store sensitive information like API keys and database credentials
+- When allocating memory for sensitive data, ensure it is securely wiped after use
+- When allocating data buffers, always check for buffer overflows and underflows
+- Regularly audit code for security vulnerabilities and follow best practices
+
 ### SQL development
 - Use MSSQL/T-SQL language
 - Prefer  block comments `/**/` instead of line comments `--`, even for single lines
