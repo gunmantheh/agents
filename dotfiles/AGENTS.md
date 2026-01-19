@@ -19,8 +19,10 @@
 - Always use file and console logging, console for `INFO` level messages, file for `DEBUG` level messages
 - Always make `--verbose` parameter available to enable console legging on `DEBUG` level
 - When developing webapp, use `flask` module
-- Use `sqlalchemy` module to interact with databases. Use version 17
-- 
+- Use `sqlalchemy` module to interact with databases.
+- Use MSSQL
+- Use ODBC version 17 drivers for database connections
+
 
 ### Web development
 - Always use `jQuery`
@@ -32,11 +34,23 @@
 
 ### SQL development
 - Use MSSQL/T-SQL language
-- Prefer  block comments `/**/` instead of line comments `--`, even for single lines
+- Always declare @Debug variable. This variable is used to enable/disable debug outputs
+```sql
+DECLARE @Debug INT = 0; -- Set to 1 to enable debug outputs
+```
+- Always use temp tables `#TempTable` instead of table variables `@TableVar`
+- Prefer block comments `/**/` instead of line comments `--`, even for single lines
 - When developing queries, use `@Debug` flags to show values of temp tables 
 ```sql
 IF @Debug = 1 BEGIN SELECT '#Table' AS Source, * FROM #Table ORDER BY Id DESC END;
 ```
+- Make sure to drop temp tables at the begining of the script
+```sql
+DROP TABLE IF EXISTS #TempTable, #TempTable2;
+```
+- Always add indexes to temp tables if they are used in JOIN/WHERE contexts
+- Make sure no Column Name or Table Name starts with a lowercase letter, always use UpperCamelCase
+
 - When creating DELETE/UPDATE/INSERT queries, always use batching by 4999 entries, use this pattern:
 ```sql
 CREATE TABLE #Processing
